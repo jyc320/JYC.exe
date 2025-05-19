@@ -256,5 +256,9 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
   └─$ strings chosen0 | grep NCKU
   NCKUCTF{_________________}
   ```
+### 檔案存取權限  
 ![0a942266-4343-4fa1-8040-2f04adc014a9](https://github.com/user-attachments/assets/971d7f2d-0063-4155-b146-09c03993110a)
--chmod(change mode)
+-chmod(change mode)：變更存取權限。格式： chmod <mode> <file>
+  ```
+  
+  ```
