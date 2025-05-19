@@ -198,4 +198,30 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
   drwxrwxr-x  2 jyc jyc 4096 May 19 18:16 notes
   -rw-rw-r--  1 jyc jyc  500 May 19 18:14 README.md
   ```
-- cat(concatenate)
+- cat(concatenate)：輸出文件內容。格式：cat <file>
+- file：判斷檔案型態。格式：file <file>
+- grep(global regular expression print)：格式：grep [OPTION] <pattern> <file>
+  - 常用選項：
+    - `-i`：忽略大小寫
+    - `-r`：遞迴搜尋目錄
+    - `-n`：顯示行號
+    - `-v`：反向匹配（顯示不符合的行）
+- more：分頁顯示檔案內容（可滾動閱讀)。格式：more <file>
+- cp(copy)：複製檔案或目錄。格式：cp [OPTION] <source> <dir>
+- rm(remove)：刪除檔案或空目錄。格式：rm [OPTION] <file>
+- find：在檔案系統中搜尋檔案。格式：find [path] [expression]
+- strings：顯示檔案中可讀的文字（常用於分析二進位檔)，reverse常用。格式：strings <file>
+  ```
+
+
+
+
+
+
+
+
+
+
+
+  
+  ```
