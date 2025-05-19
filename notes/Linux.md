@@ -279,7 +279,7 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
   drwxrwxr-x 2 jyc jyc 4096 May 19 18:16 notes
   -rw-rw-r-- 1 jyc jyc  500 May 19 18:14 README.md                                                   
   ```
-### 檔案壓縮與打包
+### 📦檔案壓縮與打包
 - 壓縮：依演算法降低檔案儲存容量
 - 打包：多個檔案或目錄包裹成一大檔案
 - gzip：Linux標準檔案壓縮指令(會取代原檔案)。格式：gzip [option] <file>
@@ -288,50 +288,77 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
     ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
     └─$ ls
     example.txt
-
+                                                                                                                                                                           
     ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
     └─$ gzip example.txt
-
+                                                                                                                                                                           
     ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
     └─$ ls
     example.txt.gz
-
+                                                                                                                                                                           
     ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
     └─$ gunzip example.txt.gz
-
+                                                                                                                                                                           
     ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
     └─$ ls
     example.txt
-
+                                                                                                                                                                           
     ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
     └─$ ls
     file1.txt  file2.txt
-
+                                                                                                                                                                           
     ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
     └─$ tar -cvf archive.tar file1.txt file2.txt
     file1.txt
     file2.txt
-
+                                                                                                                                                                           
     ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
     └─$ ls
     archive.tar  file1.txt  file2.txt
-
+                                                                                                                                                                           
     ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
     └─$ tar -czvf archive.tar.gz file1.txt file2.txt
     file1.txt
     file2.txt
-
+                                                                                                                                                                           
     ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
     └─$ ls
     archive.tar.gz  file1.txt  file2.txt
-
+                                                                                                                                                                           
     ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
     └─$ tar -xvf archive.tar
     file1.txt
     file2.txt
-
+                                                                                                                                                                           
     ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
     └─$ tar -xzvf archive.tar.gz
     file1.txt
     file2.txt
 ```
+###常見運算子
+- `>`：標準輸出導向（overwrite 覆蓋）
+將指令的輸出結果寫入檔案中，會覆蓋檔案原有內容。
+- `>>`：標準輸出導向（append 附加)將輸出結果附加到檔案末尾，不會清除原本內容。
+- `<`：標準輸入導向（input redirection）將檔案的內容導入某個指令作為輸入。
+- `|`：管線（pipe）
+將前一個指令的「輸出」直接作為後一個指令的「輸入」。
+
+```
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ echo "Hello World" > output.txt
+                                                                                                                                                                           
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ echo "Next Line" >> output.txt
+                                                                                                                                                                           
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ wc -l < output.txt
+                                                                                                                                                                           
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ cat output.txt | grep Hello
+```
+### 網路相關
+1. 本機網路
+  - hostname：查看本機名稱
+  - ip：查看本機網路介面設定
+  - netstat：顯示本機網路連線資訊
+2.
