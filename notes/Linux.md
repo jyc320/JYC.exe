@@ -441,4 +441,3 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
 | 搭配工具建議 | `tcpdump`, `tshark`, `NetworkMiner`, `Scapy`                         |
 
 ![wireshark](https://github.com/user-attachments/assets/c3f5b789-5097-46c7-9a71-3bf7229eea9f)
-
