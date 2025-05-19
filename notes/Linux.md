@@ -213,5 +213,46 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
 - find：在檔案系統中搜尋檔案。格式：find [path] [expression]
 - strings：顯示檔案中可讀的文字（常用於分析二進位檔)，reverse常用。格式：strings <file>
   ```
-  這個
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ cat flag     
+  flag
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ cat .Flag
+  cat: .Flag: No such file or directory
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ ls       
+  flag  FLAG  notes  README.md
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ ls -a 
+  .  ..  .flag  flag  FLAG  .git  notes  README.md
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ cat .flag
+  H1pp0{y0u_r3_50_go0d}
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ file flag 
+  flag: ASCII text
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ cat name | grep -i JYC
+  James Emma Liam Olivia Noah Ava William Sophia Benjamin Isabella Lucas Mia Henry Amelia Alexander Harper Ethan Evelyn Jacob Abigail Michael Ella Daniel Scarlett Matthew Grace Sebastian Chloe Jack Lily   Owen Aria Samuel Zoey David Penelope Joseph Layla Carter Riley John Nora Wyatt Camila Leo Victoria Isaac Hannah Luke Aurora Julian Stella Gabriel Natalie Anthony Addison Dylan Leah Lincoln Lucy Jaxon   Brooklyn Asher Paisley Christopher Savannah Josiah Audrey Andrew JYC Bella Thomas Skylar Joshua Claire Ezra Elena Hudson Anna Charles Samantha Caleb Genesis Isaiah Caroline Nathan Kennedy Elijah Sadie   Maverick Hailey Nicholas Aaliyah Dominic Autumn Hunter Violet Austin Mila Levi Eva Aaron Naomi Ryan Ruby Adrian Alice
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ rm flag                            
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ ls   
+  FLAG  name  notes  README.md
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ find -name .flag  
+  ./.flag
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/SCIST/Kazma-Reverse-Engineering-Course/demo-file]
+  └─$ strings chosen0 | grep NCKU
+  NCKUCTF{_________________}
   ```
