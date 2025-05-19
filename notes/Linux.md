@@ -260,5 +260,22 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
 ![0a942266-4343-4fa1-8040-2f04adc014a9](https://github.com/user-attachments/assets/971d7f2d-0063-4155-b146-09c03993110a)
 -chmod(change mode)：變更存取權限。格式： chmod <mode> <file>
   ```
-  
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ ls -l                    
+  total 16
+  -rw-rw-r-- 1 jyc jyc    5 May 19 20:13 FLAG
+  -rw-rw-r-- 1 jyc jyc  720 May 19 21:11 name
+  drwxrwxr-x 2 jyc jyc 4096 May 19 18:16 notes
+  -rw-rw-r-- 1 jyc jyc  500 May 19 18:14 README.md
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ chmod 000 FLAG                                  
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ ls -l
+  total 16
+  ---------- 1 jyc jyc    5 May 19 20:13 FLAG
+  -rw-rw-r-- 1 jyc jyc  720 May 19 21:11 name
+  drwxrwxr-x 2 jyc jyc 4096 May 19 18:16 notes
+  -rw-rw-r-- 1 jyc jyc  500 May 19 18:14 README.md                                                   
   ```
