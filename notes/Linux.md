@@ -279,3 +279,59 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
   drwxrwxr-x 2 jyc jyc 4096 May 19 18:16 notes
   -rw-rw-r-- 1 jyc jyc  500 May 19 18:14 README.md                                                   
   ```
+### 檔案壓縮與打包
+- 壓縮：依演算法降低檔案儲存容量
+- 打包：多個檔案或目錄包裹成一大檔案
+- gzip：Linux標準檔案壓縮指令(會取代原檔案)。格式：gzip [option] <file>
+- tar(tap archive)：打包指令。格式：tar [option] <tar_file> <file>
+```
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ ls
+    example.txt
+
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ gzip example.txt
+
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ ls
+    example.txt.gz
+
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ gunzip example.txt.gz
+
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ ls
+    example.txt
+
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ ls
+    file1.txt  file2.txt
+
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ tar -cvf archive.tar file1.txt file2.txt
+    file1.txt
+    file2.txt
+
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ ls
+    archive.tar  file1.txt  file2.txt
+
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ tar -czvf archive.tar.gz file1.txt file2.txt
+    file1.txt
+    file2.txt
+
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ ls
+    archive.tar.gz  file1.txt  file2.txt
+
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ tar -xvf archive.tar
+    file1.txt
+    file2.txt
+
+    ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+    └─$ tar -xzvf archive.tar.gz
+    file1.txt
+    file2.txt
+```
