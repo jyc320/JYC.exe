@@ -20,6 +20,8 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
 - CTF 中常見的 flag 位置：`/home/*`, `/root`, `/var`, `/tmp`
 - 特殊注意事項
   - 檔名及目錄名有大小寫區分
+    ![linux1](https://github.com/user-attachments/assets/29e0af1b-db2f-4fb7-ac4f-8e6ed7032dbc)
+
   - 
     
 
