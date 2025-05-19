@@ -26,7 +26,15 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
   - 名稱以.開頭可隱藏檔案
     ![linux 2](https://github.com/user-attachments/assets/9b6f44f4-db4e-480c-bd89-1f050504cbc1)
 
-  - tab
+  - tab鍵可補足檔案或目錄名稱
+  - 執行檔執行需加上路徑，如：./flag
+ 
+## 2. 基本指令
+- <command> --help 或 <command> -h：列出指令的說明(重要)
+- man <command>：列出指令使用手冊
+  ```bash
+  ddd
+  ```
 
     
     
