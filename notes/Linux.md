@@ -10,7 +10,7 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
 |`/sbin`||系統管理用的二進位檔案所在|
 |`/etc`|設定檔所在，如：/etc/psswd|
 |`/dev`|裝置檔案所在，如：/dev/sda|
-|`/var`|日誌、資料苦等檔案所在，如：`/var/log`|
+|`/var`|日誌、資料庫等檔案所在，如：`/var/log`|
 |`/tmp`|暫存檔案，重啟後會被清除|
 |`/home`|使用者的主目錄，如：`/home/jyc`|
 |`/boot`|引導程式檔案、核心映像核引導所需的設定檔所在|
@@ -361,4 +361,12 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
   - hostname：查看本機名稱
   - ip：查看本機網路介面設定
   - netstat：顯示本機網路連線資訊
-2.
+2. 查詢遠端主機
+  - ping：查看遠端主機連線。格式：ping <ip/dn>
+  - traceroute：查看連線路徑。格式：traceroute <ip/dn>
+  - nsloop：透過DNS查詢。格式：nslookup <ip/dn>
+3. 遠端主機連線
+  - ssh(secure shell)：安全加密連線。格式：ssh <usr>@<ip> -p <port>
+  - wget(world wide web get)：依url下載檔案。格式：wget <url>
+  - nc(netcat)：遠端主機連線(明文傳送)。格式：nc <ip> <port>
+  - curl(command-line url)：在command 環境下連接url。格式：curl [options] <url>
