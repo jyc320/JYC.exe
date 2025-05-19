@@ -24,5 +24,10 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
     ![linux1](https://github.com/user-attachments/assets/29e0af1b-db2f-4fb7-ac4f-8e6ed7032dbc)
 
   - 名稱以.開頭可隱藏檔案
+    ![linux 2](https://github.com/user-attachments/assets/9b6f44f4-db4e-480c-bd89-1f050504cbc1)
+
+  - tab
+
+    
     
 
