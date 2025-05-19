@@ -169,6 +169,10 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
 
    Manual page ls(1) line 1 (press h for help or q to quit)
   ```
-    
+### 目錄操作相關指令
+- ls(list)：列出目錄內容。格式：ls [OPTION]
+- cd(change directory)：變更當前目錄。格式：cd <dir>
+- mkdir(make directory)：在當前目錄下賤粒子目錄。格式：mkdir <dir>
+- pwd(prrint working directory)：顯示當前目錄路徑
     
 
