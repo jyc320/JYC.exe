@@ -174,5 +174,28 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
 - cd(change directory)：變更當前目錄。格式：cd <dir>
 - mkdir(make directory)：在當前目錄下賤粒子目錄。格式：mkdir <dir>
 - pwd(prrint working directory)：顯示當前目錄路徑
-    
-
+  ```
+  ┌──(jyc㉿EVANGELION-01)-[~]
+  └─$ cd ~/My-Security-Growth-Record 
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ ls    
+    flag  FLAG  notes  README.md
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ ls -a 
+  .  ..  .flag  flag  FLAG  .git  notes  README.md
+                                                                                                                                                                                                                                           
+  ┌──(jyc㉿EVANGELION-01)-[~/My-Security-Growth-Record]
+  └─$ ls -al
+  total 32
+  drwxrwxr-x  4 jyc jyc 4096 May 19 20:13 .
+  drwx------ 55 jyc jyc 4096 May 19 18:25 ..
+  -rw-rw-r--  1 jyc jyc   22 May 19 20:12 .flag
+  -rw-rw-r--  1 jyc jyc    5 May 19 20:13 flag
+  -rw-rw-r--  1 jyc jyc    5 May 19 20:13 FLAG
+  drwxrwxr-x  8 jyc jyc 4096 May 19 18:14 .git
+  drwxrwxr-x  2 jyc jyc 4096 May 19 18:16 notes
+  -rw-rw-r--  1 jyc jyc  500 May 19 18:14 README.md
+  ```
+- cat(concatenate)
