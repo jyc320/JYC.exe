@@ -370,3 +370,28 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
   - wget(world wide web get)：依url下載檔案。格式：wget <url>
   - nc(netcat)：遠端主機連線(明文傳送)。格式：nc <ip> <port>
   - curl(command-line url)：在command 環境下連接url。格式：curl [options] <url>
+
+## 🕵️‍♂️ 隱寫術（Steganography）筆記
+
+定義：將資訊「隱藏」在其他檔案（如圖片、音訊、影片等）中，達到不易被察覺的資訊傳遞。
+### 🔍 常見藏匿媒介與技巧
+
+| 媒介類型 | 隱藏方式 |
+|----------|----------|
+| 圖片     | LSB（最低有效位元）嵌入、Exif 資料、附加資料 |
+| 音訊     | 波形資料嵌入、ID3 標籤藏訊息 |
+| 文件     | 看不見的字元（Unicode Zero-width） |
+| 壓縮檔   | 多餘檔案、資料段混入 |
+
+### 🧰 常用工具
+
+| 工具        | 功能說明                     |
+|-------------|------------------------------|
+| `binwalk`   | 分析檔案結構、提取隱藏內容   |
+| `steghide`  | 藏訊息於圖片、音訊中         |
+| `zsteg`     | 專門針對 PNG 隱寫分析        |
+| `strings`   | 提取檔案中的可讀字串         |
+| `exiftool`  | 查看與編輯圖片的 Metadata     |
+| `stegsolve` | GUI 工具，可調整圖層觀察異常 |
+
+###### ※好用的線上工具[aprei solve](https://www.aperisolve.com/)
