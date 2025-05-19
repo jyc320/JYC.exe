@@ -11,6 +11,6 @@
 - [PicoCTF](https://picoctf.org/)
 - [HackTheBox](https://www.hackthebox.com/)
 - [SCIST](https://tryhackme.com/)
-- [CTFHub](https://www.ctfhub.com/)
+- [NCKUCTF]([https://www.ctfhub.com/](https://class.nckuctf.org/challenges))
 
 > 本專案將持續更新，歡迎點星或 Fork！
