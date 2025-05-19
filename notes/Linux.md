@@ -213,5 +213,5 @@ Linux採用階層式檔案系統，所有資料都是從跟目錄'/'開始。
 - find：在檔案系統中搜尋檔案。格式：find [path] [expression]
 - strings：顯示檔案中可讀的文字（常用於分析二進位檔)，reverse常用。格式：strings <file>
   ```
-  
+  這個
   ```
