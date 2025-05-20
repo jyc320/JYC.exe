@@ -13,4 +13,4 @@
 - [SCIST](https://tryhackme.com/)
 - [NCKUCTF](https://class.nckuctf.org/challenges)
 
-> 本專案將持續更新，歡迎點星或 Fork！
+> 本專案將持續更新，歡迎點⭐️或 Fork
