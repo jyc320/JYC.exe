@@ -8,5 +8,16 @@
   |str|j|y|c|
   |index $\leftarrow$|-3|-2|-1|
 - 字串運算
-  - `+`:字串連接
+  - `+`：字串連接
+  - `*`：字串重複輸出
+  - `[i]`：取出索引值i的字元
+  - `[start_index:end_index:step]`：截取部分字串（不包含end_index)
+  - `in`：成員運算子
+    ```python
+    s = "jyc"
+    a = s + "320" #"jyc320"
+    b = s * 2 #"jycjyc"
+    c = s[2] #"c"
+    
+    
 ### 常用函數
