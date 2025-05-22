@@ -7,13 +7,13 @@
   |-------------------|-|-|-|
   |str|j|y|c|
   |index $\leftarrow$|-3|-2|-1|
-- 字串運算
-  - `+`：字串連接
-  - `*`：字串重複輸出
-  - `[i]`：取出索引值i的字元
-  - `[start_index:end_index:step]`：截取部分字串（不包含end_index)
-  - `in`：成員運算子，如 'j' in 'jyc' $\Rightarrow$ True
-    ```python
+#### 字串運算
+- `+`：字串連接
+- `*`：字串重複輸出
+- `[i]`：取出索引值i的字元
+- `[start_index:end_index:step]`：截取部分字串（不包含end_index)
+- `in`：成員運算子，如 'j' in 'jyc' $\Rightarrow$ True
+```python
     s = 'jyc'
     
     a = s + '320' # 'jyc320'
@@ -21,20 +21,20 @@
     c = s[2] # 'c'
     d = s[::-1] # 'cyj'
     e = s[:2:] # 'jy'
-    ```
-- 字串方法
-  - \<str\>.lower()：轉成小寫
-  - \<str\>.upper()：轉成大寫
-  - \<str\>.replace(old, new)：以新子字串取代舊子字串
-  - \<str\>.split([sep])：字串以 sep（預設空白）分割，回傳列表
-  - \<str\>.strip([chars])：移除字串頭尾的 chars(預設空白）子字元
-    ```python
+```
+#### 字串方法
+- \<str\>.lower()：轉成小寫
+- \<str\>.upper()：轉成大寫
+- \<str\>.replace(old, new)：以新子字串取代舊子字串
+- \<str\>.split([sep])：字串以 sep（預設空白）分割，回傳列表
+- \<str\>.strip([chars])：移除字串頭尾的 chars(預設空白）子字元
+```python
     a = s.lower()         # 'jyc'
     b = s.upper()         # 'JYC'
     c = s.replace('j', 'J')   # 'Jyc'
     d = s.split('y')      # ['j', 'c']
     e = s.strip('j')      # 'yc'
-    ```
+```
 
 ### 列表
 - Python 中儲存「有順序的可變資料集合」的資料型別
@@ -45,14 +45,14 @@
   - 儲存大量資料（如可能密碼、字元組）
   - 處理輸入資料、解碼後處理
   - 建立自動化腳本中的暫存容器
-- 列表運算
-  - `+`：合併列表
-  - `*`：重複列表
-  - `[i]`：取得索引 i 的元素
-  - `[start:end:step]`：擷取子列表（不包含 end）
-  - `in`：成員運算子
+#### 列表運算
+- `+`：合併列表
+- `*`：重複列表
+- `[i]`：取得索引 i 的元素
+- `[start:end:step]`：擷取子列表（不包含 end）
+- `in`：成員運算子
 
-    ```python
+```python
     s = ['j', 'y', 'c']
 
     a = s + ['3', '2', '0']     # ['j', 'y', 'c', '3', '2', '0']
@@ -61,18 +61,18 @@
     d = s[::-1]                 # ['c', 'y', 'j']
     e = s[:2]                   # ['j', 'y']
     f = 'y' in s                # True
-    ```
+```
 
-- 列表方法
-  - \<list\>.append(x)：在清單末端加入元素 x
-  - \<list\>.insert(i, x)：在索引 i 插入元素 x
-  - \<list\>.pop([i])：移除索引 i 的元素，預設移除最後一個
-  - \<list\>.remove(x)：移除第一個出現的元素 x
-  - \<list\>.index(x)：取得元素 x 第一次出現的索引
-  - \<list\>.count(x)：計算元素 x 出現的次數
-  - \<list\>.reverse()：就地反轉清單
-  - \<list\>.sort()：就地排序清單（可排序字串與數字）
-    ```python
+#### 列表方法
+- \<list\>.append(x)：在清單末端加入元素 x
+- \<list\>.insert(i, x)：在索引 i 插入元素 x
+- \<list\>.pop([i])：移除索引 i 的元素，預設移除最後一個
+- \<list\>.remove(x)：移除第一個出現的元素 x
+- \<list\>.index(x)：取得元素 x 第一次出現的索引
+- \<list\>.count(x)：計算元素 x 出現的次數
+- \<list\>.reverse()：就地反轉清單
+- \<list\>.sort()：就地排序清單（可排序字串與數字）
+```python
     s.append("3")        # ['j', 'y', 'c', '3']
     s.insert(1, "a")     # ['j', 'a', 'y', 'c', '3']
     s.pop()              # ['j', 'a', 'y', 'c']
@@ -81,18 +81,18 @@
     n = s.count("c")     # 1
     s.reverse()          # ['c', 'y', 'j']
     s.sort()             # ['c', 'j', 'y']
-    ```
+```
 
 ### 常用函數
-- 運算相關
-  - `abs(x)`：絕對值  
-  - `max(iterable)`：回傳最大值  
-  - `min(iterable)`：回傳最小值  
-  - `sum(iterable)`：回傳總和  
-  - `pow(x, y)`：回傳 x 的 y 次方（等同 x**y）  
-  - `round(x, n)`：將數字四捨五入到小數點第 n 位  
+#### 運算相關
+- `abs(x)`：絕對值  
+- `max(iterable)`：回傳最大值
+- `min(iterable)`：回傳最小值  
+- `sum(iterable)`：回傳總和  
+- `pow(x, y)`：回傳 x 的 y 次方（等同 x**y）  
+- `round(x, n)`：將數字四捨五入到小數點第 n 位  
 
-    ```python
+```python
     x = -5
     y = [1, 3, 9, 2]
 
@@ -102,34 +102,34 @@
     d = sum(y)         # 15
     e = pow(2, 3)      # 8
     f = round(3.14159, 2)  # 3.14
-    ```
+```
 
-- 字元與 ASCII 編碼處理
-  - `chr(i)`：將整數轉換成對應的 Unicode 字元（如 ASCII）  
-  - `ord(c)`：將單一字元轉換為對應的整數值（ASCII 或 Unicode 編碼）
+#### 字元與 ASCII 編碼處理
+- `chr(i)`：將整數轉換成對應的 Unicode 字元（如 ASCII）  
+- `ord(c)`：將單一字元轉換為對應的整數值（ASCII 或 Unicode 編碼）
 
-    ```python
+```python
     a = chr(65)      # 'A'
     b = ord('A')     # 65
-    ```
+```
 
-- 進位轉換與進位整數
-  - `int(x, base)`：將 base 進位的數字字串轉成十進位整數  
-  - `hex(x)`：將整數轉換為十六進位字串（字首為 0x）  
-  - `bin(x)`：將整數轉換為二進位字串（字首為 0b）
+#### 進位轉換與進位整數
+- `int(x, base)`：將 base 進位的數字字串轉成十進位整數  
+- `hex(x)`：將整數轉換為十六進位字串（字首為 0x）  
+- `bin(x)`：將整數轉換為二進位字串（字首為 0b）
 
-    ```python
+```python
     a = int("1010", 2)     # 10（二進位 → 十進位）
     b = int("1f", 16)      # 31（十六進位 → 十進位）
     c = hex(255)           # '0xff'
     d = bin(10)            # '0b1010'
-    ```
+```
 
-- 其他實用函數
-  - `map(function, iterable)`：將 function 套用到 iterable 的每個元素上  
-  - `eval(expression)`：執行一段 Python 表達式字串（謹慎使用）
+#### 其他實用函數
+- `map(function, iterable)`：將 function 套用到 iterable 的每個元素上  
+- `eval(expression)`：執行一段 Python 表達式字串（謹慎使用）
 
-  ```python
+```python
   # map：將每個數字轉成平方
   nums = [1, 2, 3, 4]
   squares = list(map(lambda x: x**2, nums))  # [1, 4, 9, 16]
@@ -137,31 +137,31 @@
   # eval：將字串作為程式執行
   expr = "2 + 3 * (4 - 1)"
   result = eval(expr)     # 11
-  ```
+```
 
-- 補充說明
-  - `eval()` 能執行任意 Python 程式碼，**不建議在處理外部輸入時使用**，容易導致資安漏洞
-  - `map()` 通常與 `lambda` 函數搭配，適合處理清單中的資料轉換
-  - `int(x, base)` 是解碼題目中常見的處理方式
+#### 補充說明
+- `eval()` 能執行任意 Python 程式碼，**不建議在處理外部輸入時使用**，容易導致資安漏洞
+- `map()` 通常與 `lambda` 函數搭配，適合處理清單中的資料轉換
+- `int(x, base)` 是解碼題目中常見的處理方式
 
 ## 2. Python資安應用
-- 模組與套件的匯入與安裝
-  - 使用 `import` 匯入 Python 內建或第三方模組
-  - `from 模組 import 函數`：只引入特定功能
-  - 第三方模組可使用 pip 安裝
+#### 模組與套件的匯入與安裝
+- 使用 `import` 匯入 Python 內建或第三方模組
+- `from 模組 import 函數`：只引入特定功能
+- 第三方模組可使用 pip 安裝
     pip 安裝指令：
 
-    ```bash
+```bash
     pip install 模組名稱
-    ```
+```
     
-    ```python
+```python
     import math
     import base64
     from hashlib import sha256
-    ```
+```
 
-- 常用模組
+#### 常用模組
 1. base64（編碼與解碼）
   - 功能：進行 base64 編碼與解碼  
   - 常見於 Crypto 題目、資料傳輸處理
