@@ -25,3 +25,28 @@
 ## Redirect
 
 ![image](https://github.com/user-attachments/assets/c91fdac6-6a89-4b1b-b224-321640107adb)
+
+---
+
+## Cookie
+
+![image](https://github.com/user-attachments/assets/34996d3d-dd10-43b4-9151-828035724c8e)
+![image](https://github.com/user-attachments/assets/5136f7bb-2daf-473b-b52e-89ae6d52cedb)
+
+看起來應該是要讓我們改cookie
+
+![image](https://github.com/user-attachments/assets/47422647-2d1d-4a0a-b2c2-9c26e78a8411)
+
+打開Cookie-Editor
+
+![image](https://github.com/user-attachments/assets/4192094a-2bf4-4c0b-9366-852b3cb6f3a8)
+
+將user 的value 改成cookie_monster 再刷新一次網頁
+
+![image](https://github.com/user-attachments/assets/58468a04-5ee1-4daa-8743-8e093eb008fb)
+
+就可以得到FLAG
+
+---
+
+
