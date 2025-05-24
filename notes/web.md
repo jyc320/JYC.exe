@@ -16,11 +16,8 @@ Web（World Wide Web）是建立在網際網路（Internet）上的資訊系統�
 5. 接收伺服器回應的 HTML / CSS / JS
 6. 呈現在瀏覽器畫面中
 
----
 
-## 2. Web Security
-
-### 前端基礎構成
+### 前端基礎
 
 #### HTML
 - 網頁的基本骨架，使用標籤（tag）來結構化內容。
@@ -110,6 +107,8 @@ curl -b 'admin=1' http://target.com/panel
 #### [Wappalyzer](https://www.wappalyzer.com/)
 
 ---
+
+## 2. Web Security
 
 ### 解題三階段：Recon → Fuzz → Attack
 
