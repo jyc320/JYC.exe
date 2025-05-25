@@ -1,4 +1,4 @@
-## 1. Web
+## Web
 Web（World Wide Web）是建立在網際網路（Internet）上的資訊系統，由瀏覽器（Client）與伺服器（Server）進行互動，透過 HTTP 協議傳遞資料。
 
 ### 基本結構
@@ -109,7 +109,7 @@ curl -b 'admin=1' http://target.com/panel
 
 ---
 
-## 2. Web Security
+## Web Security
 
 ### 解題三階段：Recon → Fuzz → Attack
 
@@ -432,5 +432,178 @@ SSRF 利用後端伺服器發送請求能力，誘使伺服器向攻擊者指定
 - **防禦方法：**
   - 嚴格限制可請求的目標域名或 IP 範圍
   - 驗證並過濾輸入 URL
+## 前端安全（Frontend Security）
+
+前端安全著重於瀏覽器端可能發生的漏洞與攻擊，例如惡意 JavaScript、輸入未過濾導致的腳本注入、DOM 操控、使用者敏感資料外洩等。本節重點包含：
+
+- XSS（跨站腳本攻擊）
+- CSRF（跨站請求偽造）
+- Clickjacking（點擊劫持）
+- CORS 設定問題
+- 前端框架安全問題
+- JWT / Cookie 安全
+- 檔案上傳驗證失效
+
+---
+
+### XSS（Cross-Site Scripting）
+
+#### 介紹
+XSS 是攻擊者在網頁中注入 JavaScript，當其他使用者瀏覽該頁面時即會執行。可能竊取 Cookie、進行操作等。
+
+#### 種類
+- **Reflected XSS（反射型）**
+  - 利用 URL 傳入輸入，立即回應中反映。
+  - 範例：`http://target.com/?q=<script>alert(1)</script>`
+
+- **Stored XSS（儲存型）**
+  - 惡意腳本儲存在資料庫或留言系統中，其他人讀取即觸發。
+  
+- **DOM-based XSS**
+  - JavaScript 透過不安全 DOM 操作（如 `innerHTML`）將輸入插入畫面。
+
+#### 測試語法
+```html
+<script>alert('JYC')</script>
+<img src=x onerror=alert(1)>
+"><svg/onload=alert(1)>
+```
+
+#### 防禦方式
+- 對輸入與輸出做適當轉義（Escape）
+- 使用框架的安全渲染（如 React 自動 Escape）
+- 禁用 `eval`、`innerHTML` 等 API
+- 使用 CSP（Content Security Policy）限制腳本來源
+
+---
+
+### CSRF（Cross-Site Request Forgery）
+
+#### 介紹
+CSRF 利用已登入使用者的身份，從第三方網站發送請求至受信任網站，執行未授權操作。
+
+#### 攻擊條件
+- 使用者已登入並持有有效 Cookie
+- 網站未驗證請求來源
+
+#### 範例攻擊
+```html
+<img src="http://target.com/delete?id=1">
+<form method="POST" action="http://target.com/change_pw">
+  <input name="pw" value="hacked">
+</form>
+```
+
+#### 防禦方式
+- 加入 CSRF Token，並驗證每次請求
+- 驗證 Referer / Origin Header
+- 限制 Cookie 為 `SameSite=Strict` 或 `Lax`
+- 重要操作使用 POST 並加驗證
+
+---
+
+### Clickjacking（點擊劫持）
+
+#### 介紹
+攻擊者透過透明 iframe 嵌入目標網站，誘導使用者點擊特定位置，觸發操作。
+
+#### 範例
+```html
+<iframe src="http://target.com" style="opacity:0;position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
+```
+
+#### 防禦方式
+- HTTP Header：`X-Frame-Options: DENY` 或 `SAMEORIGIN`
+- 使用 `frame-ancestors` 限制 iframe 嵌入
+- 對重要操作加入使用者確認
+
+---
+
+### CORS（跨來源資源共用）
+
+#### 介紹
+CORS 設定錯誤可能導致第三方網站可跨來源取得敏感資料。
+
+#### 常見誤區
+- 回傳 `Access-Control-Allow-Origin: *` 給所有網站
+- 未檢查 `Access-Control-Allow-Credentials`
+
+#### 防禦方式
+- 僅允許可信任來源
+- 不允許敏感資料 (`withCredentials`) 配合 `*` 使用
+- 嚴格設定 `Access-Control-Allow-Headers`
+
+---
+
+### 前端框架安全
+
+#### Vue / React 常見問題
+- 使用 `v-html`、`dangerouslySetInnerHTML` 時易造成 XSS
+- 未限制 Router 導致 IDOR 或未授權訪問
+- 錯誤使用本地儲存存放敏感資料（如 Token）
+
+#### 建議
+- 避免使用 HTML 插入 API
+- 前端路由需配合後端驗證權限
+- 敏感資訊不要存於 localStorage / sessionStorage
+
+---
+
+### Cookie / JWT 安全
+
+#### Cookie
+- 避免 `HttpOnly=false`，否則可被 JS 讀取（XSS）
+- 加上 `Secure`、`SameSite`、`Path` 限制範圍
+- 敏感操作加入額外驗證（不只靠 Cookie）
+
+#### JWT（JSON Web Token）
+- 不要暴露 secret，可被 forged
+- 注意 JWT 演算法混淆（如將 alg 改為 none）
+- 加密敏感資訊，不要儲存明文帳號/密碼
+
+---
+
+### 檔案上傳驗證問題
+
+#### 常見攻擊
+- 上傳惡意腳本：如 `.php` Webshell
+- 攻擊者繞過副檔名限制：`.php.jpg`、雙副檔 `.jpg.php`
+- MIME Type 偽造或內容不符
+
+#### 防禦建議
+- 僅允許白名單副檔名
+- 驗證 MIME Type 與內容
+- 上傳目錄使用不可執行權限
+- 上傳後重新命名檔案
+
+---
+
+### 前端除錯資訊外洩
+
+#### 常見風險
+- `console.log` 留下敏感資訊
+- JavaScript Source Map 外洩（`.map` 檔可還原原始碼）
+- Webpack 設定為 `development` 模式
+
+#### 防禦建議
+- 上線前移除所有 log 訊息
+- 不應公開 .map 檔案
+- 使用 `production` 模式打包前端
+
+---
+
+### 開發者工具偵測與攻擊
+
+#### 攻擊者利用 DevTools
+- 查看 API 請求與回應內容
+- 修改 Cookie 或 JS 變數
+- 嘗試執行前端函式操控狀態
+
+#### 防禦建議
+- 將關鍵邏輯放後端實作
+- 使用 HMAC / 簽章驗證重要資料
+- 使用 JS 混淆工具增加分析難度（但非萬全）
+
+---
   - 透過防火牆或網路控管限制內網訪問
   - 避免直接使用用戶輸入做為請求 URL
