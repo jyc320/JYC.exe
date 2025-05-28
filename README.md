@@ -5,7 +5,6 @@
 ## 🔍 目錄導覽
 - [學習筆記](./notes)
 - [CTF Writeups](./Writeups)
-- [總結與反思]
 
 ## 🎯 主要學習平台
 - [PicoCTF](https://picoctf.org/)
