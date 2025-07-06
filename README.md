@@ -9,7 +9,7 @@
 ## 🎯 主要學習平台
 - [PicoCTF](https://picoctf.org/)
 - [HackTheBox](https://www.hackthebox.com/)
-- [SCIST](https://tryhackme.com/)
+- [SCIST](https://scist.org/)
 - [NCKUCTF](https://class.nckuctf.org/challenges)
 
 > 本專案將持續更新，歡迎點⭐️或 Fork
